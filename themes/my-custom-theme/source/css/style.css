@@ -1,0 +1,61 @@
+/* 基本样式 */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background: #f4f4f4;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav {
+    margin-top: 1rem;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+main {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+footer {
+    background: #f4f4f4;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.post {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.post h2 {
+    margin-bottom: 0.5rem;
+}
+
+.post time {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.post .content {
+    margin-top: 1rem;
+}
