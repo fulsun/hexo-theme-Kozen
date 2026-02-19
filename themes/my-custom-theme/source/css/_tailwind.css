@@ -37,3 +37,8 @@ body {
 .pagination a {
     @apply px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 transition-colors;
 }
+
+/* 文章目录固定定位 */
+.sticky-toc {
+    @apply sticky top-20;
+}
