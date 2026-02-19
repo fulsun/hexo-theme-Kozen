@@ -1,9 +1,8 @@
-<div
-    class="w-[90%] mx-auto px-4 py-8  flex flex-col items-center min-w-[300px] max-w-[300px] bg-white  rounded-2xl shadow-lg">
+<div class="w-[90%] mx-auto px-4 py-8  flex flex-col items-center min-w-[300px] max-w-[300px] bg-white  rounded-2xl shadow-lg">
     <!-- 作者头像 -->
     <div class="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center mb-4 overflow-hidden">
         <img src="<%- theme.author.avatar || '/images/default-avatar.jpg' %>" alt="<%= theme.author.name || 'Author' %>"
-            class="w-full h-full object-cover">
+            class="w-full h-full object-cover" />
     </div>
     <!-- 作者名称 -->
     <h3 class="text-xl font-bold text-gray-800 mb-1">
@@ -46,28 +45,27 @@
             <a href="<%= theme.social.github || '#' %>" class="hover:text-blue-600 transition-colors">
                 <i class="fa-brands fa-github text-xl"></i>
             </a>
+        <% } %>
+        <% if (theme.social.twitter) { %>
+            <a href="<%= theme.social.twitter || '#' %>" class="hover:text-blue-400 transition-colors">
+                <i class="fa-brands fa-twitter text-xl"></i>
+            </a>
             <% } %>
-                <% if (theme.social.twitter) { %>
-                    <a href="<%= theme.social.twitter || '#' %>" class="hover:text-blue-400 transition-colors">
-                        <i class="fa-brands fa-twitter text-xl"></i>
-                    </a>
-                    <% } %>
-                        <% if (theme.social.email) { %>
-                            <a href="<%= theme.social.email || '#' %>" class="hover:text-red-500 transition-colors">
-                                <i class="fa fa-envelope text-xl"></i>
-                            </a>
-                            <% } %>
-                                <% if (theme.social.rss) { %>
-                                    <a href="<%= theme.social.rss || '#' %>"
-                                        class="hover:text-orange-500 transition-colors">
-                                        <i class="fa fa-rss text-xl"></i>
-                                    </a>
-                                    <% } %>
+        <% if (theme.social.email) { %>
+            <a href="<%= theme.social.email || '#' %>" class="hover:text-red-500 transition-colors">
+                <i class="fa fa-envelope text-xl"></i>
+            </a>
+        <% } %>
+        <% if (theme.social.rss) { %>
+            <a href="<%= theme.social.rss || '#' %>"
+                class="hover:text-orange-500 transition-colors">
+                <i class="fa fa-rss text-xl"></i>
+            </a>
+        <% } %>
     </div>
 </div>
 <!-- 文章页面显示目录 -->
 <% if (is_post()) { %>
-
     <div
         class="w-[90%] mx-auto px-4 py-8  flex flex-col items-center min-w-[300px] max-w-[300px] bg-white  rounded-2xl shadow-lg">
 
@@ -115,5 +113,3 @@
         </div>
 
         <% } %>
-
-            </div>

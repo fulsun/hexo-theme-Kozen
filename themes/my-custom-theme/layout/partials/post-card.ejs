@@ -1,29 +1,16 @@
-<!-- <article class="post">
-    <h2><a href="<%- url_for(post.path) %>"><%- post.title %></a></h2>
-    <time><%- date(post.date, 'YYYY-MM-DD') %></time>
-    <div class="content"><%- post.excerpt || post.content %></div>
-</article> -->
-
-<!-- 文章卡片组件 包含图片、标题、时间、摘要、阅读更多按钮 -->
-<!-- class：边框、圆角、内边距4、flex布局、两端对齐、垂直居中 选中添加背景灰 阴影效果 -->
-<div class="border border-gray-200 rounded-md h-[250px]  flex items-center justify-between hover:bg-gray-100 shadow-md group">
-    <!-- 左侧图片容器 class: 宽度2/5、高度100%、溢出隐藏、圆角 -->
-    <div class="w-2/5 h-full overflow-hidden rounded-l-md">
-        <!-- 图片 class: 宽度100%、高度100%、对象包含、过渡变换0.3秒、group悬停时缩放1.1 -->
-        <img src="<%- post.cover %>" alt="<%- post.title %>" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+<div class="container group max-w-[80%] mx-auto h-[250px]  flex  bg-white  rounded-3xl shadow-lg">
+    <div class="flex-1 rounded-l-3xl overflow-hidden">
+        <img src="<%- post.cover %>" alt="<%- post.title %>"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 " />
     </div>
-    <!-- 右侧内容 -->
-    <div class="w-3/5 px-4 leading-loose flex flex-col justify-between">
-        <!-- 文章标题 -->
-        <div class="text-2xl font-bold"><a href="<%- url_for(post.path) %>"><%- post.title %></a></div>
-        <!-- 文章时间 -->
+    <div class="flex-1 rounded-r-3xl text-3xl px-4 leading-relaxed ">
+        <div class="">
+            <a href="<%- url_for(post.path) %>"><%- post.title %></a>
+        </div>
         <div class="text-sm text-gray-500">
-            <p class="fa fa-calendar-alt"></p> 发布时间：<%- date(post.date, 'YYYY-MM-DD' ) %>
+            <p class="fa fa-calendar-alt"></p>
+            <span> 发布时间：<%- date(post.date, 'YYYY-MM-DD' ) %></span>
         </div>
-        <div class="content"><%- post.excerpt || post.content.substring(0, 400) %></div>
-        <!-- class：阅读更多按钮、蓝色文字、悬停红色、过渡颜色、鼠标指针 边框实线 -->
-        <div class="text-right text-black-600 hover:text-red-600 transition-colors cursor-pointer">
-            <a class="border border-solid p-2  rounded" href="<%- url_for(post.path) %>">点击阅读全文 >></a>
-        </div>
+        <div class="mt-4 text-base"><%- post.excerpt || post.content.replace(/<[^>]+>/g, '').substring(0, 200) %>...</div>
     </div>
 </div>

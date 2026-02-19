@@ -4,25 +4,25 @@
 <%- partial('partials/head') %>
     <!-- class: 背景灰色、最小高度100vh -->
 
-    <body class="container mx-auto bg-gray-50 min-h-screen">
+    <body class="bg-gray-50 min-h-screen">
         <!-- class: 网格布局、行高自动、1fr、自动 -->
-        <div class="grid grid-rows-[auto_1fr_auto]">
+        <div class="container mx-auto min-h-screen grid grid-rows-[auto_1fr_auto]">
             <div class="w-full">
                 <%- partial('partials/header') %>
             </div>
-            <div class="w-full flex">
-                <div class="content w-[74%]">
+            <!-- 主内容区：使用 flex 布局，两列，左侧占 3/4，右侧占 1/4 -->
+            <div class="flex flex-nowrap gap-6 py-6 w-full">
+                <div class="w-3/4">
                     <%- body %>
                 </div>
-                <div class="sidebar w-[26%]">
+                <div class="w-1/4">
                     <%- partial('partials/sidebar') %>
                 </div>
             </div>
+            <!-- 页脚：占满整行 -->
             <div class="w-full">
                 <%- partial('partials/footer') %>
             </div>
-        </div>
-
         </div>
 
     </body>

@@ -1,17 +1,16 @@
-<!--  -->
-<div class="posts">
-    <!-- 文章卡片列表 -->
-        <% page.posts.each(function(post) { %>
-            <%- partial('partials/post-card', {post: post}) %>
-                <% }); %>
+<!-- 文章卡片列表 -->
+<div class="posts space-y-6">
+    <% page.posts.each(function(post) { %>
+        <%- partial('partials/post-card', { post: post }) %>
+    <% }); %>
 </div>
 
 <!-- 分页导航 -->
-<div class="pagination">
+<div class="pagination mt-8 flex justify-center gap-4">
     <% if (page.prev) { %>
-        <a href="<%- url_for(page.prev_link || page.prev) %>">上一页</a>
-        <% } %>
-            <% if (page.next) { %>
-                <a href="<%- url_for(page.next_link || page.next) %>">下一页</a>
-                <% } %>
+        <a href="<%- url_for(page.prev_link || page.prev) %>" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded transition-colors">上一页</a>
+    <% } %>
+    <% if (page.next) { %>
+        <a href="<%- url_for(page.next_link || page.next) %>" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded transition-colors">下一页</a>
+    <% } %>
 </div>
