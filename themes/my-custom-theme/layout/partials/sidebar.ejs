@@ -1,0 +1,119 @@
+<div
+    class="w-[90%] mx-auto px-4 py-8  flex flex-col items-center min-w-[300px] max-w-[300px] bg-white  rounded-2xl shadow-lg">
+    <!-- 作者头像 -->
+    <div class="w-24 h-24 rounded-full bg-gray-200 flex items-center justify-center mb-4 overflow-hidden">
+        <img src="<%- theme.author.avatar || '/images/default-avatar.jpg' %>" alt="<%= theme.author.name || 'Author' %>"
+            class="w-full h-full object-cover">
+    </div>
+    <!-- 作者名称 -->
+    <h3 class="text-xl font-bold text-gray-800 mb-1">
+        <%= theme.author.name || 'Author' %>
+    </h3>
+    <!-- 作者简介 -->
+    <p class="text-gray-500 text-sm text-center mb-4">
+        <%= theme.author.description || 'A blog about technology life.' %>
+    </p>
+    <!-- 作者统计信息 -->
+    <div class="grid grid-cols-3 gap-8 mb-6 text-center">
+        <div>
+            <div class="text-xs font-bold text-gray-800">
+                <%= site.posts.length %>
+            </div>
+            <div class="text-sm text-gray-500">文章</div>
+        </div>
+        <div>
+            <div class="text-xs font-bold text-gray-800">
+                <%= site.categories.length %>
+            </div>
+            <div class="text-sm text-gray-500">分类</div>
+        </div>
+        <div>
+            <div class="text-xs font-bold text-gray-800">
+                <%= site.tags.length %>
+            </div>
+            <div class="text-sm text-gray-500">标签</div>
+        </div>
+    </div>
+
+    <!-- 关注按钮 -->
+    <button class="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-800 transition-colors w-full">
+        <a href="<%= theme.social.github || '#' %>" class="">Follow Me</a>
+    </button>
+
+    <!-- 作者社交链接 -->
+    <div class="flex justify-center gap-4 text-gray-500 mt-4">
+        <% if (theme.social.github) { %>
+            <a href="<%= theme.social.github || '#' %>" class="hover:text-blue-600 transition-colors">
+                <i class="fa-brands fa-github text-xl"></i>
+            </a>
+            <% } %>
+                <% if (theme.social.twitter) { %>
+                    <a href="<%= theme.social.twitter || '#' %>" class="hover:text-blue-400 transition-colors">
+                        <i class="fa-brands fa-twitter text-xl"></i>
+                    </a>
+                    <% } %>
+                        <% if (theme.social.email) { %>
+                            <a href="<%= theme.social.email || '#' %>" class="hover:text-red-500 transition-colors">
+                                <i class="fa fa-envelope text-xl"></i>
+                            </a>
+                            <% } %>
+                                <% if (theme.social.rss) { %>
+                                    <a href="<%= theme.social.rss || '#' %>"
+                                        class="hover:text-orange-500 transition-colors">
+                                        <i class="fa fa-rss text-xl"></i>
+                                    </a>
+                                    <% } %>
+    </div>
+</div>
+<!-- 文章页面显示目录 -->
+<% if (is_post()) { %>
+
+    <div
+        class="w-[90%] mx-auto px-4 py-8  flex flex-col items-center min-w-[300px] max-w-[300px] bg-white  rounded-2xl shadow-lg">
+
+        <h4 class="text-lg font-bold text-gray-800 mb-3">文章目录</h4>
+        <div class="post-toc text-sm">
+            <%- toc(page.content, {list_number: true}) %>
+        </div>
+    </div>
+    <% } else {%>
+        <!-- 显示归档信息 -->
+        <div
+            class="w-[90%] mt-4 mx-auto px-4 py-8  flex flex-col items-center min-w-[300px] max-w-[300px] bg-white  rounded-2xl shadow-lg">
+
+            <h4 class="text-lg font-bold text-gray-800 mb-3">归档信息</h4>
+            <% if (page.year) { %>
+                <p class="text-sm text-gray-600">当前年份：<%= page.year %>
+                </p>
+                <% if (page.month) { %>
+                    <p class="text-sm text-gray-600">当前月份：<%= page.month %>
+                    </p>
+                    <% } %>
+                        <% } %>
+                            <p class="text-sm text-gray-600">文章数量：<%= page.posts.length %>
+                            </p>
+        </div>
+
+        <!-- 显示分类信息 -->
+        <div
+            class="w-[90%]  mt-4 mx-auto px-4 py-8  flex flex-col items-center min-w-[300px] max-w-[300px] bg-white  rounded-2xl shadow-lg">
+            <h4 class="text-lg font-bold text-gray-800 mb-3">分类信息</h4>
+            <p class="text-sm text-gray-600">当前分类：<%= page.category %>
+            </p>
+            <p class="text-sm text-gray-600">文章数量：<%= page.posts.length %>
+            </p>
+        </div>
+
+        <!-- 显示标签信息 -->
+        <div
+            class="w-[90%]  mt-4 mx-auto px-4 py-8  flex flex-col items-center min-w-[300px] max-w-[300px] bg-white  rounded-2xl shadow-lg">
+            <h4 class="text-lg font-bold text-gray-800 mb-3">标签信息</h4>
+            <p class="text-sm text-gray-600">当前标签：<%= page.tag %>
+            </p>
+            <p class="text-sm text-gray-600">文章数量：<%= page.posts.length %>
+            </p>
+        </div>
+
+        <% } %>
+
+            </div>
