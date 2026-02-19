@@ -1,0 +1,8 @@
+# 主题配置文件
+name: My Custom Theme
+version: 1.0.0
+author: Fulsun
+language: zh-CN
+menu:
+  Home: /
+  Archives: /archives
