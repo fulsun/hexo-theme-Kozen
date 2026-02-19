@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+@source "../../layout/**/*.ejs";
+@source "../../source/js/**/*.js";
+
+/* 自定义样式 */
+.posts {
+    @apply flex flex-col gap-8;
+}
+
+.post {
+    @apply border-b border-gray-200 pb-4;
+}
+
+.post h2 {
+    @apply mb-2;
+}
+
+.post time {
+    @apply text-gray-600 text-sm;
+}
+
+.post .content {
+    @apply mt-4;
+}
+
+.pagination {
+    @apply mt-8 flex justify-between;
+}
+
+.pagination a {
+    @apply px-4 py-2 bg-gray-100 rounded hover:bg-gray-200 transition-colors;
+}
