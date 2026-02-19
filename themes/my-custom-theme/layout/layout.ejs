@@ -2,14 +2,29 @@
 <html lang="<%= config.language %>">
 
 <%- partial('partials/head') %>
+    <!-- class: 背景灰色、最小高度100vh -->
 
-    <!-- 主体内容区域 容器居中、水平内边距4、垂直内边距4 -->
-    <body class="container max-w-[1200px] mx-auto px-4 py-4">
-        <%- partial('partials/header') %>
-            <main>
-                <%- body %>
-            </main>
-            <%- partial('partials/footer') %>
+    <body class="container mx-auto bg-gray-50 min-h-screen">
+        <!-- class: 网格布局、行高自动、1fr、自动 -->
+        <div class="grid grid-rows-[auto_1fr_auto]">
+            <div class="w-full">
+                <%- partial('partials/header') %>
+            </div>
+            <div class="w-full flex">
+                <div class="content w-[74%]">
+                    <%- body %>
+                </div>
+                <div class="sidebar w-[26%]">
+                    <%- partial('partials/sidebar') %>
+                </div>
+            </div>
+            <div class="w-full">
+                <%- partial('partials/footer') %>
+            </div>
+        </div>
+
+        </div>
+
     </body>
 
     <!-- Scripts -->
