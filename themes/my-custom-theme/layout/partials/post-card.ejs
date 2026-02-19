@@ -1,16 +1,17 @@
-<div class="container group max-w-[80%] mx-auto h-[250px]  flex  bg-white  rounded-3xl shadow-lg">
+<a href="<%- url_for(post.path) %>" class="block container group max-w-[90%] mx-auto h-[250px]  flex  bg-white  rounded-3xl shadow-lg no-underline text-black">
     <div class="flex-1 rounded-l-3xl overflow-hidden">
         <img src="<%- post.cover %>" alt="<%- post.title %>"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 " />
     </div>
     <div class="flex-1 rounded-r-3xl text-3xl px-4 leading-relaxed ">
         <div class="">
-            <a href="<%- url_for(post.path) %>"><%- post.title %></a>
+            <%- post.title %>
         </div>
         <div class="text-sm text-gray-500">
             <p class="fa fa-calendar-alt"></p>
             <span> 发布时间：<%- date(post.date, 'YYYY-MM-DD' ) %></span>
         </div>
-        <div class="mt-4 text-base"><%- post.excerpt || post.content.replace(/<[^>]+>/g, '').substring(0, 200) %>...</div>
+        <div class="mt-4 text-base"><%- post.excerpt || post.content.replace(/<[^>]+>/g, '').substring(0, 200) %>...
+        </div>
     </div>
-</div>
+</a>
