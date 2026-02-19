@@ -1,8 +1,53 @@
-<header class="site-header">
-    <h1 class="site-title"><a href="/"><%= config.title %></a></h1>
-    <nav class="site-nav">
-        <% for (var item in theme.menu) { %>
-            <a href="<%- url_for(theme.menu[item]) %>"><%= item %></a>
-        <% } %>
-    </nav>
+<!-- 顶部固定导航栏，背景半透明毛玻璃效果 -->
+<!-- class：固定定位、顶部0、左右0、z-index 50、背景模糊、白色半透明、阴影 -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/80 shadow-sm">
+    <!-- class：容器居中、水平内边距4、垂直内边距4、flex布局、两端对齐、垂直居中 -->
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <!-- 左侧 Logo 区域 -->
+        <!-- class：flex布局、垂直居中、间距2 -->
+        <div class="flex items-center gap-2">
+            <!-- 站点图标 -->
+            <!-- class：字号2xl、字体粗、蓝色 -->
+            <div class="text-2xl font-bold text-blue-600">📝</div>
+            <!-- 站点标题，点击返回首页 -->
+            <!-- class：自定义类site-title、字号xl、字体粗 -->
+            <h1 class="site-title text-xl font-bold">
+                <!-- class：灰色文字、悬停蓝色、过渡颜色 -->
+                <a href="/" class="text-gray-900 hover:text-blue-600 transition-colors"><%= config.title %></a>
+            </h1>
+        </div>
+        <!-- 右侧导航菜单 -->
+        <!-- class：自定义类site-nav -->
+        <nav class="site-nav">
+            <!-- class：flex布局、水平间距6 -->
+            <ul class="flex space-x-6">
+                <!-- 遍历主题配置中的菜单项 -->
+                <% for (var item in theme.menu) { %>
+                    <li>
+                        <!-- 解析菜单项，提取图标信息 -->
+                        <% var menuItem = theme.menu[item]; %>
+                        <% var iconClass = ''; %>
+                        <% if (typeof menuItem === 'string' && menuItem.includes('||')) { %>
+                            <% var parts = menuItem.split('||'); %>
+                            <% var url = parts[0].trim(); %>
+                            <% iconClass = parts[1].trim(); %>
+                        <% } else { %>
+                            <% var url = menuItem; %>
+                        <% } %>
+                        <!-- class：灰色文字、悬停蓝色、过渡颜色、内边距px-2 py-1、圆角、悬停背景灰 -->
+                        <a href="<%- url_for(url) %>" class="text-gray-600 hover:text-blue-600 transition-colors px-2 py-1 rounded hover:bg-gray-100 flex items-center gap-1">
+                            <% if (iconClass) { %>
+                                <i class="<%= iconClass %>"></i>
+                            <% } %>
+                            <%= item %>
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
+        </nav>
+    </div>
 </header>
+
+<!-- 占位元素：为固定定位的 header 留出顶部空间，防止内容被遮挡 -->
+<!-- class：顶部内边距20 -->
+<div class="pt-20"></div>
