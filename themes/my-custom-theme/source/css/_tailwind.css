@@ -1,6 +1,13 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/lxgwwenkaiscreenr.css");
+
 @import 'tailwindcss';
 @source "../../layout/**/*.ejs";
 @source "../../source/js/**/*.js";
+
+/* 全局字体设置 */
+body {
+    font-family:  "LXGW WenKai Screen R", 'Noto Sans SC', sans-serif, serif;
+}
 
 /* 自定义样式 */
 .posts {
