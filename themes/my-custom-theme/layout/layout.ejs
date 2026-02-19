@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="<%= config.language %>">
 
-    <%- partial('partials/head') %>
+<%- partial('partials/head') %>
 
-<body>
-    <%- partial('partials/header') %>
-    
-    <main>
-        <%- body %>
-    </main>
-    
-    <%- partial('partials/footer') %>
-    
+    <!-- 主体内容区域 容器居中、水平内边距4、垂直内边距4 -->
+    <body class="container max-w-[1200px] mx-auto px-4 py-4">
+        <%- partial('partials/header') %>
+            <main>
+                <%- body %>
+            </main>
+            <%- partial('partials/footer') %>
+    </body>
+
+    <!-- Scripts -->
     <script src="<%- url_for('js/main.js') %>"></script>
-</body>
+
 </html>
