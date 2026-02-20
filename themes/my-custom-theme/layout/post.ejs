@@ -51,5 +51,55 @@
         <div class="post-content text-gray-700 leading-relaxed">
             <%- page.content %>
         </div>
+        
+        <!-- 为标题添加链接图标和复制链接功能 -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // 为所有标题元素添加链接图标
+                const headings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6');
+                
+                headings.forEach(heading => {
+                    // 确保标题有 ID
+                    if (!heading.id) {
+                        // 根据标题文本生成 ID
+                        const id = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+                        heading.id = id;
+                    }
+                    
+                    // 创建链接图标元素
+                    const anchor = document.createElement('a');
+                    anchor.href = `#${heading.id}`;
+                    anchor.className = 'header-anchor';
+                    anchor.innerHTML = '<span class="fa fa-link text-base"></span>';
+                    anchor.title = '复制链接';
+                    
+                    // 添加点击事件，复制链接到剪贴板并更新地址栏
+                    anchor.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const url = window.location.origin + window.location.pathname + `#${heading.id}`;
+                        
+                        // 复制链接到剪贴板
+                        navigator.clipboard.writeText(url).then(function() {
+                            // 更新地址栏
+                            window.location.hash = heading.id;
+                            
+                            // 显示复制成功提示
+                            const originalText = anchor.innerHTML;
+                            anchor.innerHTML = '✓';
+                            
+                            // 400毫毫秒后恢复原图标
+                            setTimeout(function() {
+                                anchor.innerHTML = originalText;
+                            }, 400);
+                        }).catch(function(err) {
+                            console.error('无法复制链接: ', err);
+                        });
+                    });
+                    
+                    // 将链接图标添加到标题前
+                    heading.insertBefore(anchor, heading.firstChild);
+                });
+            });
+        </script>
     </div>
 </div>
