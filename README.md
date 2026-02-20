@@ -1,8 +1,14 @@
-# My Custom Theme for Hexo
+# Kozen Theme for Hexo
 
 ## 简介
 
-My Custom Theme 是一个为 Hexo 博客框架设计的自定义主题，提供简洁、现代的界面风格和良好的用户体验。
+Kozen 是一个为 Hexo 博客框架设计的自定义主题，结合 "Ko" 和 "Ozen"（Zen 的变体，禅意），寓意简洁、宁静的阅读体验。
+
+## 主题名称由来
+
+- **Ko**：来自朋友的建议
+- **Ozen**：Zen 的变体，代表禅意
+- **Kozen**：寓意简洁、宁静的阅读体验，为用户提供沉浸式的博客阅读环境
 
 ## 功能特性
 
@@ -19,7 +25,7 @@ My Custom Theme 是一个为 Hexo 博客框架设计的自定义主题，提供�
 ### 1. 克隆主题到本地
 
 ```bash
-git clone https://github.com/yourusername/my-custom-theme.git themes/my-custom-theme
+git clone https://github.com/yourusername/kozen.git themes/kozen
 ```
 
 ### 2. 配置 Hexo 使用此主题
@@ -27,7 +33,7 @@ git clone https://github.com/yourusername/my-custom-theme.git themes/my-custom-t
 在 Hexo 博客的根目录下的 `_config.yml` 文件中设置：
 
 ```yaml
-theme: my-custom-theme
+theme: kozen
 ```
 
 ### 3. 安装依赖
@@ -50,19 +56,28 @@ hexo clean && hexo g && hexo s
 
 ```yaml
 # 主题配置文件
-name: My Custom Theme
+name: Kozen
 version: 1.0.0
-author: Your Name
+author:
+    name: Your Name
+    description: 'A blog about technology life.'
+    avatar: '/images/default-avatar.jpg'
+social:
+  github: https://github.com/yourusername
+  twitter: 
+  email: yourname@example.com
+  rss: yourname@example.com
+
 language: zh-CN
 menu:
-  Home: /
-  Archives: /archives
+  Home: / || fas fa-home
+  Archives: /archives || fas fa-archive
 ```
 
 ## 目录结构
 
 ```
-my-custom-theme/
+kozen/
 ├── _config.yml              # 主题配置
 ├── package.json             # 依赖配置
 ├── README.md                # 主题说明
@@ -75,7 +90,7 @@ my-custom-theme/
 │       └── footer.ejs       # 底部组件
 └── source/                  # 静态资源
     ├── css/                 # 样式文件
-    │   └── style.css        # 主样式文件
+    │   └── style.min.css    # 主样式文件
     ├── js/                  # 脚本文件
     │   └── main.js          # 主脚本文件
     └── images/              # 图片资源
