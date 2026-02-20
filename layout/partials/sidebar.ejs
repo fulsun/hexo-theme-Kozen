@@ -70,10 +70,10 @@
         class="sticky-toc w-[90%] mt-4 mx-auto px-4 py-8  flex flex-col items-center min-w-[300px] max-w-[300px] bg-white  rounded-2xl shadow-lg">
 
         <h4 class="text-lg font-bold text-gray-800 mb-3">文章目录</h4>
-        <div class="post-toc text-sm">
-            <%- toc(page.content, {list_number: true}) %>
+        <div class="post-toc text-sm max-h-[600px] overflow-y-auto"">
+                <%- toc(page.content, {list_number: true}) %>
+            </div>
         </div>
-    </div>
     <% } else {%>
         <!-- 显示归档信息 -->
         <div

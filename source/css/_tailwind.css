@@ -13,7 +13,7 @@ body {
 
 /* 文章目录固定定位 */
 .sticky-toc {
-    @apply sticky top-4;
+    @apply sticky top-20;
 }
 
 /* 文章内容样式 */
