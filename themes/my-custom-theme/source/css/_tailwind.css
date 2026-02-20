@@ -93,6 +93,63 @@ body {
     @apply bg-transparent p-0;
 }
 
+/* 代码块美化样式 */
+.highlight-wrap {
+    @apply relative my-4 rounded-lg overflow-hidden shadow-lg;
+}
+
+.highlight-wrap pre {
+    @apply m-0 rounded-t-none bg-gray-900 text-gray-100 p-4 overflow-x-auto;
+}
+
+.highlight-wrap pre code {
+    @apply text-gray-100 font-mono text-sm;
+}
+
+.code-header {
+    @apply flex items-center justify-between bg-gray-800 px-4 py-2 rounded-t-lg;
+}
+
+.code-header .code-title {
+    @apply flex items-center gap-2 text-gray-300 text-sm;
+}
+
+.code-header .code-dots {
+    @apply flex gap-1.5;
+}
+
+.code-header .code-dot {
+    @apply w-2.5 h-2.5 rounded-full;
+}
+
+.code-header .code-dot.red {
+    @apply bg-red-500;
+}
+
+.code-header .code-dot.yellow {
+    @apply bg-yellow-500;
+}
+
+.code-header .code-dot.green {
+    @apply bg-green-500;
+}
+
+.code-header .code-language {
+    @apply text-gray-400 text-xs font-medium;
+}
+
+.code-header .copy-button {
+    @apply bg-gray-700 hover:bg-gray-600 text-gray-300 text-xs px-3 py-1 rounded transition-colors duration-200;
+}
+
+.code-header .copy-button:hover {
+    @apply text-white;
+}
+
+.code-header .copy-button.copied {
+    @apply bg-green-600 text-white;
+}
+
 .post-content blockquote {
     @apply border-l-4 border-blue-500 pl-4 italic text-gray-600 my-4;
 }

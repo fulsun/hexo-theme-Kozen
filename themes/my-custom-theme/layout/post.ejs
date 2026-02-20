@@ -52,7 +52,7 @@
             <%- page.content %>
         </div>
         
-        <!-- 为标题添加链接图标和复制链接功能 -->
+        <!-- 为标题添加链接图标和复制链接功能，以及为代码块添加美化效果 -->
         <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // 为所有标题元素添加链接图标
@@ -87,7 +87,7 @@
                             const originalText = anchor.innerHTML;
                             anchor.innerHTML = '✓';
                             
-                            // 400毫毫秒后恢复原图标
+                            // 400毫秒后恢复原图标
                             setTimeout(function() {
                                 anchor.innerHTML = originalText;
                             }, 400);
@@ -98,6 +98,150 @@
                     
                     // 将链接图标添加到标题前
                     heading.insertBefore(anchor, heading.firstChild);
+                });
+                
+                // 为代码块添加美化效果
+                const highlightFigures = document.querySelectorAll('.post-content figure.highlight');
+                
+                highlightFigures.forEach((figure, index) => {
+                    // 从 figure 的 class 中提取语言信息
+                    let language = 'code';
+                    const classList = figure.className;
+                    const langMatch = classList.match(/highlight\s+(\w+)/);
+                    if (langMatch) {
+                        language = langMatch[1];
+                    }
+                    
+                    // 创建包装器
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'highlight-wrap';
+                    
+                    // 创建代码头部
+                    const codeHeader = document.createElement('div');
+                    codeHeader.className = 'code-header';
+                    
+                    // 创建标题部分（包含圆点和语言）
+                    const codeTitle = document.createElement('div');
+                    codeTitle.className = 'code-title';
+                    
+                    // 创建圆点
+                    const codeDots = document.createElement('div');
+                    codeDots.className = 'code-dots';
+                    
+                    const redDot = document.createElement('div');
+                    redDot.className = 'code-dot red';
+                    
+                    const yellowDot = document.createElement('div');
+                    yellowDot.className = 'code-dot yellow';
+                    
+                    const greenDot = document.createElement('div');
+                    greenDot.className = 'code-dot green';
+                    
+                    codeDots.appendChild(redDot);
+                    codeDots.appendChild(yellowDot);
+                    codeDots.appendChild(greenDot);
+                    
+                    const codeLanguage = document.createElement('span');
+                    codeLanguage.className = 'code-language';
+                    codeLanguage.textContent = language;
+                    
+                    codeTitle.appendChild(codeDots);
+                    codeTitle.appendChild(codeLanguage);
+                    
+                    // 创建复制按钮
+                    const copyButton = document.createElement('button');
+                    copyButton.className = 'copy-button';
+                    copyButton.textContent = 'COPY';
+                    
+                    // 添加复制功能
+                    copyButton.addEventListener('click', function() {
+                        // 获取所有代码行
+                        const codeLines = figure.querySelectorAll('.code .line');
+                        let code = '';
+                        
+                        codeLines.forEach(line => {
+                            // 移除行内的语法高亮标签，只保留纯文本
+                            const text = line.textContent;
+                            code += text + '\n';
+                        });
+                        
+                        navigator.clipboard.writeText(code).then(function() {
+                            copyButton.textContent = 'COPIED';
+                            copyButton.classList.add('copied');
+                            
+                            setTimeout(function() {
+                                copyButton.textContent = 'COPY';
+                                copyButton.classList.remove('copied');
+                            }, 2000);
+                        }).catch(function(err) {
+                            console.error('无法复制代码: ', err);
+                        });
+                    });
+                    
+                    // 组装头部
+                    codeHeader.appendChild(codeTitle);
+                    codeHeader.appendChild(copyButton);
+                    
+                    // 替换 figure 元素
+                    figure.parentNode.insertBefore(wrapper, figure);
+                    wrapper.appendChild(codeHeader);
+                    wrapper.appendChild(figure);
+                    
+                    // 为表格添加样式
+                    const table = figure.querySelector('table');
+                    if (table) {
+                        table.style.margin = '0';
+                        table.style.borderCollapse = 'collapse';
+                        table.style.width = '100%';
+                    }
+                    
+                    // 为代码单元格添加样式
+                    const codeCell = figure.querySelector('.code');
+                    if (codeCell) {
+                        codeCell.style.padding = '0';
+                        codeCell.style.backgroundColor = '#1f2937';
+                    }
+                    
+                    // 为行号单元格添加样式
+                    const gutterCell = figure.querySelector('.gutter');
+                    if (gutterCell) {
+                        gutterCell.style.padding = '0';
+                        gutterCell.style.backgroundColor = '#1f2937';
+                        gutterCell.style.borderRight = '1px solid #374151';
+                        gutterCell.style.width = '40px';
+                    }
+                    
+                    // 为 pre 元素添加样式
+                    const preElements = figure.querySelectorAll('pre');
+                    preElements.forEach(pre => {
+                        pre.style.margin = '0';
+                        pre.style.borderRadius = '0';
+                        pre.style.backgroundColor = '#1f2937';
+                        pre.style.color = '#f3f4f6';
+                    });
+                    
+                    // 为代码行添加样式
+                    const codeLines = figure.querySelectorAll('.line');
+                    codeLines.forEach(line => {
+                        line.style.padding = '0 12px';
+                        line.style.lineHeight = '1.5';
+                    });
+                    
+                    // 确保语法高亮样式能够正常显示
+                    const keywordElements = figure.querySelectorAll('.keyword');
+                    keywordElements.forEach(el => {
+                        el.style.color = '#60a5fa';
+                    });
+                    
+                    const titleElements = figure.querySelectorAll('.title');
+                    titleElements.forEach(el => {
+                        el.style.color = '#34d399';
+                    });
+                    
+                    const stringElements = figure.querySelectorAll('.string');
+                    stringElements.forEach(el => {
+                        el.style.color = '#fbbf24';
+                    });
                 });
             });
         </script>
