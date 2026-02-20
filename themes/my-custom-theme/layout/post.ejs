@@ -1,19 +1,55 @@
-<article class="post">
-    <header class="post-header">
-        <h1 class="text-3xl font-bold underline"><%= page.title %></h1>
-        <time><%- date(page.date, 'YYYY-MM-DD HH:mm:ss') %></time>
-    </header>
-    
-    <div class="post-content">
-        <%- page.content %>
-    </div>
-    
-    <% if (page.tags && page.tags.length > 0) { %>
-        <div class="post-tags">
-            标签: 
-            <% page.tags.each(function(tag) { %>
-                <a href="<%- url_for(tag.path) %>" class="tag"><%= tag.name %></a>
-            <% }); %>
+<!-- 文章顶部横幅图片 -->
+<div class="relative w-full h-64 bg-gradient-to-r overflow-hidden">
+    <!-- 背景图片 -->
+     <!-- class 绝对定位，覆盖整个元素 -->
+    <div class="absolute inset-0 bg-cover bg-center rounded-t-lg" style="background-image: url('<%- page.cover || '/images/default-cover.jpg' %>'); opacity: 0.5;"></div>
+    <!-- 文章标题和信息 -->
+    <div class="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
+        <h1 class="text-4xl font-bold text-balance mb-4 text-center"><%= page.title %></h1>
+        <div class="flex justify-center items-center flex-wrap gap-4 text-balance/90 text-sm text-center">
+            <span class="flex items-center gap-1">
+                <i class="fa fa-calendar"></i> 发布于：<%- date(page.date, 'YYYY-MM-DD HH:mm:ss') %>
+            </span>
+            <% if (page.updated) { %>
+                <span class="flex items-center gap-1">
+                    <i class="fa fa-edit"></i> 更新于：<%- date(page.updated, 'YYYY-MM-DD HH:mm:ss') %>
+                </span>
+            <% } %>
+            <% if (page.categories && page.categories.length > 0) { %>
+                <span class="flex items-center gap-1">
+                    <i class="fa fa-folder"></i> 分类：
+                    <% page.categories.each(function(category, index) { %>
+                        <a href="<%- url_for(category.path) %>" class="hover:underline"><%= category.name %></a><% if (index < page.categories.length - 1) { %>, <% } %>
+                    <% }); %>
+                </span>
+            <% } %>
+            <% if (page.tags && page.tags.length > 0) { %>
+                <span class="flex items-center gap-1">
+                    <i class="fa fa-tags"></i> 标签：
+                    <% page.tags.each(function(tag, index) { %>
+                        <a href="<%- url_for(tag.path) %>" class="hover:underline"><%= tag.name %></a><% if (index < page.tags.length - 1) { %>, <% } %>
+                    <% }); %>
+                </span>
+            <% } %>
         </div>
-    <% } %>
-</article>
+    </div>
+</div>
+
+<!-- 文章主体内容 -->
+<div class="py-8">
+    <!-- 文章卡片 -->
+    <div class="bg-white rounded-lg shadow-lg p-6 mb-8 transform -translate-y-8">
+        <!-- 文章标题 -->
+        <!-- <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">
+            <%= page.title %>
+        </h2> -->
+        <!-- 文章摘要 -->
+        <!-- <div class="text-gray-600 mb-8 pb-4 border-b border-gray-200">
+            <%- page.excerpt || page.content.substring(0, 200) %>...
+        </div> -->
+        <!-- 文章内容 -->
+        <div class="post-content text-gray-700 leading-relaxed">
+            <%- page.content %>
+        </div>
+    </div>
+</div>
