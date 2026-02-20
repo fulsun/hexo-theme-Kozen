@@ -204,3 +204,54 @@ body {
 .post-content .code-with-header pre {
     @apply rounded-t-none;
 }
+
+/* 文章目录样式 */
+.post-toc {
+    @apply w-full;
+}
+
+.post-toc ol {
+    @apply list-none pl-0;
+}
+
+.post-toc li {
+    @apply mb-1;
+}
+
+.post-toc a {
+    @apply block py-1 px-2 rounded text-gray-700 hover:bg-gray-100 transition-colors duration-200 relative pl-6;
+}
+
+.post-toc a:hover {
+    @apply text-blue-600;
+}
+
+/* 目录项层级缩进 */
+.post-toc ol ol {
+    @apply pl-4;
+}
+
+/* 目录项序号样式 */
+.post-toc li:before {
+    @apply text-gray-500 mr-2;
+}
+
+/* 当前选中目录项样式 */
+.post-toc a.active {
+    @apply bg-blue-100 text-blue-700 font-medium;
+}
+
+/* 滚动条样式 - 隐藏默认滚动条，只使用自定义滚动指示器 */
+.post-toc::-webkit-scrollbar {
+    @apply w-0;
+}
+
+.post-toc {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* 目录内容样式 */
+.toc-content {
+    @apply pr-4;
+}

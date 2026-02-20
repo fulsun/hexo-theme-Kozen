@@ -1,5 +1,5 @@
 # 主题配置文件
-name: My Custom Theme
+name: Kozen
 version: 1.0.0
 notice: 'Welcome to my blog! This is a notice section.'
 author:
@@ -17,3 +17,5 @@ menu:
   Home: / || fas fa-home
   Archives: /archives || fas fa-archive
 
+toc:
+  list_number: false # 是否显示目录编号
