@@ -18,7 +18,7 @@ body {
 
 /* 文章内容样式 */
 .post-content {
-    @apply max-w-none;
+    @apply max-w-full;
 }
 
 .post-content h1,
@@ -95,7 +95,7 @@ body {
 
 /* 代码块美化样式 */
 .highlight-wrap {
-    @apply relative my-4 rounded-lg overflow-hidden shadow-lg;
+    @apply relative my-4 rounded-lg overflow-hidden shadow-lg overflow-x-auto;
 }
 
 .highlight-wrap pre {
@@ -156,6 +156,27 @@ body {
 
 .post-content a {
     @apply text-blue-600 hover:text-blue-800 hover:underline;
+}
+
+/* 表格样式美化 */
+.post-content table {
+    @apply w-full border-collapse my-6;
+}
+
+.post-content table th {
+    @apply bg-gray-100 px-4 py-2 text-left text-sm font-medium text-gray-700 border border-gray-300;
+}
+
+.post-content table td {
+    @apply px-4 py-2 text-sm text-gray-600 border border-gray-300;
+}
+
+.post-content table tr:nth-child(even) {
+    @apply bg-gray-50;
+}
+
+.post-content table tr:hover {
+    @apply bg-gray-100;
 }
 
 /* 提示框样式 */
