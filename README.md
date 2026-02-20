@@ -25,10 +25,20 @@ Kozen 是一个为 Hexo 博客框架设计的自定义主题，结合 "Ko" 和 "
 ### 1. 克隆主题到本地
 
 ```bash
-git clone https://github.com/yourusername/kozen.git themes/kozen
+git clone https://github.com/fulsun/hexo-theme-Kozen.git themes/kozen
 ```
 
-### 2. 配置 Hexo 使用此主题
+### 2. 使用 Git Submodule 方式安装
+
+如果您希望更方便地管理主题更新，可以使用 Git Submodule 方式安装：
+
+```bash
+git submodule add https://github.com/fulsun/hexo-theme-Kozen.git themes/kozen
+```
+
+这样主题会作为一个子模块添加到您的博客仓库中，便于后续更新。
+
+### 3. 配置 Hexo 使用此主题
 
 在 Hexo 博客的根目录下的 `_config.yml` 文件中设置：
 
@@ -36,19 +46,41 @@ git clone https://github.com/yourusername/kozen.git themes/kozen
 theme: kozen
 ```
 
-### 3. 安装依赖
+### 4. 安装依赖
 
 ```bash
 npm install
 ```
 
-### 4. 生成并预览
+### 5. 生成并预览
 
 ```bash
 hexo clean && hexo g && hexo s
 ```
 
 然后访问 `http://localhost:4000` 查看效果。
+
+## 更新主题
+
+### 1. 常规方式更新
+
+如果您使用常规克隆方式安装主题，可以通过以下命令更新：
+
+```bash
+cd themes/kozen
+git pull origin master
+```
+
+### 2. Git Submodule 方式更新
+
+如果您使用 Git Submodule 方式安装主题，可以通过以下命令更新：
+
+```bash
+# 在博客根目录执行
+git submodule update --remote themes/kozen
+```
+
+这样会更新所有子模块，包括主题。
 
 ## 配置选项
 
